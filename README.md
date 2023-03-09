@@ -8,7 +8,7 @@
 
 ## Project URL
 
-[Loading...]
+[https://web322-cverena-brito-battes.cyclic.app](https://web322-cverena-brito-battes.cyclic.app)
 
 ## Settings
 
