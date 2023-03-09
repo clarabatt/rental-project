@@ -7,10 +7,20 @@
                 <input type="text" class="form-control" id="email" name="email" value="{{values.email}}" placeholder="
                     name@example.com">
             </div>
+            {{#if validationMsg.email}}
+            <div class="invalid-feedback">
+                {{validationMsg.email}}
+            </div>
+            {{/if}}
             <div class="mb-3">
                 <label for="inputPassword" class="form-label">Password</label>
                 <input type="password" class="form-control" id="password" name="password" value="{{values.password}}">
             </div>
+            {{#if validationMsg.password}}
+            <div class="invalid-feedback">
+                {{validationMsg.password}}
+            </div>
+            {{/if}}
             <div class="buttons d-flex flex-row justify-content-evenly">
                 <a href="/" class="btn btn-secondary" role="button">Back to Home</a>
                 <button type="submit" class="btn btn-primary">Login</button>
