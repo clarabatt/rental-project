@@ -24,12 +24,10 @@ router.get("/signup", (req, res) => {
 
 router.post("/login", (req, res) => {
 
-    console.log(req.body);
-
     const { email, password } = req.body;
 
     var responseObj = {
-        validationMsg: "",
+        validationMsg: {},
         values: req.body
     };
 
@@ -40,8 +38,8 @@ router.post("/login", (req, res) => {
         isValidationOk = false;
     }
     
-    if (!typeof email !== "string" || email.trim().length === 0){
-        responseObj.validationMsg.password = "Please enter an email";
+    if (typeof email !== "string" || email.trim().length === 0){
+        responseObj.validationMsg.email = "Please enter an email";
         isValidationOk = false;
     }
 
