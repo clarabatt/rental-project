@@ -22,8 +22,35 @@ router.get("/signup", (req, res) => {
     res.render("general/signup");
 });
 
-router.get("/welcome", (req, res) => {
-    res.render("general/welcome");
+router.post("/login", (req, res) => {
+
+    console.log(req.body);
+
+    const { email, password } = req.body;
+
+    var responseObj = {
+        validationMsg: ""
+    };
+
+    isValidationOk = true;
+
+    if (typeof password !== "string" || password.trim().length === 0){
+        responseObj.validationMsg.password = "Please enter a password";
+        isValidationOk = false;
+    }
+    
+    if (!typeof email !== "string" || email.trim().length === 0){
+        responseObj.validationMsg.password = "Please enter an email";
+        isValidationOk = false;
+    }
+
+    if (isValidationOk) {
+        res.render("general/welcome");
+    } else {
+        res.json(responseObj);
+    }
+
 });
+
 
 module.exports = router;
