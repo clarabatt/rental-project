@@ -1,0 +1,29 @@
+<div class="card house_card">
+    <img class="card-img-top" src={{imageUrl}}
+        alt="{{{picture.site}}} by {{{picture.author}}}: {{picture.url}}" />
+    <div class="card-body">
+        <span>
+            <h4>{{headline}} - {{city}}</h4>
+        </span>
+        <ul class="list-group list-group-flush">
+            <li class="list-group-item">
+                <span>
+                    {{numSleeps}}
+                    <i alt="people" data-toggle="tooltip" data-placement="top" title="People" style="color: #25252b" class="bi bi-people-fill"></i>
+                </span>
+                <span>
+                    {{numBedrooms}}
+                    <i alt="bed" data-toggle="tooltip" data-placement="top" title="Bedrooms" style="color: #25252b" class="bi bi-usb-mini-fill"></i>
+                </span>
+                <span>
+                    {{numBathrooms}}
+                    <i alt="bathroom" data-toggle="tooltip" data-placement="top" title="Bathrooms" style="color: #25252b" class="bi bi-badge-wc-fill"></i>
+                </span>
+            </li>
+        </ul>
+    </div>
+    <div class="card-footer d-flex flex-row-reverse justify-content-between">
+        <h5>${{pricePerNight}}</h5>
+        <small class="text-muted">per night</small>
+    </div>
+</div>

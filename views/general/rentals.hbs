@@ -1,0 +1,13 @@
+
+<section class="rentalsPage">
+    {{#each rentals}}
+        <div class="cityProvince">
+            <h2>{{cityProvince}}</h2>
+                {{#each rentals}}
+                    <div class="houseCard">
+                        {{>card}}
+                    </div>
+                {{/each}}
+        </div>
+    {{/each}}
+</section>
