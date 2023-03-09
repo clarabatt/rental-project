@@ -29,7 +29,8 @@ router.post("/login", (req, res) => {
     const { email, password } = req.body;
 
     var responseObj = {
-        validationMsg: ""
+        validationMsg: "",
+        values: req.body
     };
 
     isValidationOk = true;
@@ -47,7 +48,7 @@ router.post("/login", (req, res) => {
     if (isValidationOk) {
         res.render("general/welcome");
     } else {
-        res.json(responseObj);
+        res.render("general/login", responseObj);
     }
 
 });
