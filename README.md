@@ -5,12 +5,15 @@ No part of this assignment has been copied manually or electronically from any o
 (including web sites) or distributed to other students.
 
 Student Name  : Clara Verena Brito Battesini
+
 Student Email : cverena-brito-battes@myseneca.ca
+
 Course/Section: WEB322 NCC
 
 ## Project URLs
 
 GitHub Repo   : [https://github.com/clarabatt/web322-cverena-brito-battes](https://github.com/clarabatt/web322-cverena-brito-battes)
+
 Cyclic URL    : [https://web322-cverena-brito-battes.cyclic.app](https://web322-cverena-brito-battes.cyclic.app)
 
 ## Settings
