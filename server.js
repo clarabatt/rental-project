@@ -26,6 +26,9 @@ app.set("view engine", ".hbs");
 // Make the assets folder public
 app.use(express.static(path.join(__dirname, "/assets")));
 
+// Set up body-parser
+app.use(express.urlencoded({ extended: false }));
+
 const generalController = require("./controllers/generalController");
 app.use("/", generalController);
 
