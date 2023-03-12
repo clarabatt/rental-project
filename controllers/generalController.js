@@ -75,9 +75,38 @@ router.post("/signup", (req, res) => {
 
     if (isValidationOk) {
         
-        // SEND EMAIL
-        res.render("general/welcome");
+          const sendGrid = require("@sendgrid/mail");
+          sendGrid.setApiKey(process.env.SEND_GRID_API_KEY);
+  
+          const msg = {
+              to: email,
+              from: "clarabattesini@gmail.com",
+              subject: "Clara from Rent Temp: Welcome!",
+              html:
+                  `Hi ${firstname} ${lastname}!<br>
+                  We saw that you are interested on book a house rent. 
+                  That's the right place, we can help you with that task!
+                  Look our website to know more about us and to see new offers.
 
+                  Sincerely, 
+                  Clara
+                  Customer Success Analyst 
+                  `
+          };
+  
+          sendGrid.send(msg)
+              .then(() => {
+                res.render("general/welcome");
+              })
+              .catch(err => {
+                  console.log(err);
+  
+                  res.render("general/signup", {
+                    validationMsg,
+                    values: req.body
+                  });
+              });
+  
     } else {
         res.render("general/signup", responseObj);
     }
