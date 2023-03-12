@@ -1,37 +1,35 @@
+<section class="hero">
+    <img src="/img/hero1.jpg"
+        alt="A house being cutted by the picture edges, in a dark blue sky. We can see the gray bricks on the walls. Unsplash picture by Étienne Beauregard-Riverin - https://unsplash.com/photos/B0aCvAVSX8E" />
+    <h1>Rent a home for a season</h1>
+    <div class="hero-buttons d-flex flex-row justify-content-center">
+        <a href="/rentals" class="btn btn-secondary" role="button">See Rentals</a>
+        <a href="/sign-up" class="btn btn-secondary" role="button">Sign up for free</a>
+    </div>
+</section>
 
-    <section class="hero">
-        <img src="/img/hero1.jpg"
-            alt="A house being cutted by the picture edges, in a dark blue sky. We can see the gray bricks on the walls. Unsplash picture by Étienne Beauregard-Riverin - https://unsplash.com/photos/B0aCvAVSX8E" />
-        <h1>Rent a home for a season</h1>
-        <div class="hero-buttons d-flex flex-row justify-content-center">
-            <a href="/rentals" class="btn btn-secondary"  role="button">See Rentals</a>
-            <a href="/signup" class="btn btn-secondary"  role="button">Sign up for free</a>
-        </div>
-    </section>
+<section class="benefits">
+    <img class="benefit_img" src="/img/benefits/004-security.png" alt="Security badge: A shield with a lock inside" />
+    <div class="benefit">
+        <h3>More fun, less burocracy</h3>
+        <p>We provide all the payment service, including rental insurance, to cover owner and guests. Stay safe and
+            have a quicky answer</p>
+    </div>
+    <img class="benefit_img" src="/img/benefits/005-check.png" alt="Verified badge: A green check" />
+    <div class="benefit">
+        <h3>Approved houses only</h3>
+        <p>Our team do inspections on all houses on the catalog to ensure the Rent Temp quality pattern</p>
+    </div>
+    <img class="benefit_img" src="/img/benefits/002-sofa.png" alt="Relax badge: A red sofa" />
+    <div class="benefit">
+        <h3>Relax and have fun</h3>
+        <p>It's quick and easy use Rent Temp, use your time to relax and have fun with family and friends</p>
+    </div>
+</section>
 
-    <section class="benefits">
-        <img class="benefit_img" src="/img/benefits/004-security.png"
-            alt="Security badge: A shield with a lock inside" />
-        <div class="benefit">
-            <h3>More fun, less burocracy</h3>
-            <p>We provide all the payment service, including rental insurance, to cover owner and guests. Stay safe and
-                have a quicky answer</p>
-        </div>
-        <img class="benefit_img" src="/img/benefits/005-check.png" alt="Verified badge: A green check" />
-        <div class="benefit">
-            <h3>Approved houses only</h3>
-            <p>Our team do inspections on all houses on the catalog to ensure the Rent Temp quality pattern</p>
-        </div>
-        <img class="benefit_img" src="/img/benefits/002-sofa.png" alt="Relax badge: A red sofa" />
-        <div class="benefit">
-            <h3>Relax and have fun</h3>
-            <p>It's quick and easy use Rent Temp, use your time to relax and have fun with family and friends</p>
-        </div>
-    </section>
-    
 
 <section class="rentals">
     {{#each rentals}}
-        {{>card}}
+    {{>card}}
     {{/each}}
 </section>

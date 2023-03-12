@@ -8,8 +8,8 @@ router.get("/", (req, res) => {
     });
 });
 
-router.get("/login", (req, res) => {
-    res.render("general/login");
+router.get("/log-in", (req, res) => {
+    res.render("general/log-in");
 });
 
 router.get("/rentals", (req, res) => {
@@ -18,11 +18,11 @@ router.get("/rentals", (req, res) => {
     });
 });
 
-router.get("/signup", (req, res) => {
-    res.render("general/signup");
+router.get("/sign-up", (req, res) => {
+    res.render("general/sign-up");
 });
 
-router.post("/signup", (req, res) => {
+router.post("/sign-up", (req, res) => {
     
     console.log(req.body);
 
@@ -101,18 +101,18 @@ router.post("/signup", (req, res) => {
               .catch(err => {
                   console.log(err);
   
-                  res.render("general/signup", {
+                  res.render("general/sign-up", {
                     validationMsg,
                     values: req.body
                   });
               });
   
     } else {
-        res.render("general/signup", responseObj);
+        res.render("general/sign-up", responseObj);
     }
 });
 
-router.post("/login", (req, res) => {
+router.post("/log-in", (req, res) => {
 
     const { email, password } = req.body;
 
@@ -136,7 +136,7 @@ router.post("/login", (req, res) => {
     if (isValidationOk) {
         res.render("general/welcome");
     } else {
-        res.render("general/login", responseObj);
+        res.render("general/log-in", responseObj);
     }
 
 });
