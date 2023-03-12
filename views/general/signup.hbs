@@ -7,21 +7,33 @@
                 <label class="form-label">First Name</label>
                 <input type="text" class="form-control {{#if validationMsg.firstname}}is-invalid{{/if}}"
                     id="exampleFormControlInput1">
+                <div class="invalid-feedback">
+                    {{validationMsg.firstname}}
+                </div>
             </div>
             <div class="mb-3">
                 <label class="form-label">Last Name</label>
                 <input type="text" class="form-control {{#if validationMsg.lastname}}is-invalid{{/if}}"
                     id="exampleFormControlInput1">
+                <div class="invalid-feedback">
+                    {{validationMsg.lastname}}
+                </div>
             </div>
             <div class="mb-3">
                 <label for="staticEmail" class="form-label">Email</label>
                 <input type="text" class="form-control {{#if validationMsg.email}}is-invalid{{/if}}"
                     id="exampleFormControlInput2" placeholder="name@example.com">
+                <div class="invalid-feedback">
+                    {{validationMsg.email}}
+                </div>
             </div>
             <div class="mb-3">
                 <label for="inputPassword" class="form-label">Password</label>
                 <input type="password" class="form-control {{#if validationMsg.password}}is-invalid{{/if}}"
                     id="exampleFormControlInput3">
+                <div class="invalid-feedback">
+                    {{validationMsg.password}}
+                </div>
             </div>
             <div class="mb-3">
                 <label for="inputPassword" class="form-label">Confirm Password</label>
