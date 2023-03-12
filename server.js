@@ -14,6 +14,10 @@ const path = require("path");
 const express = require("express");
 const exphbs = require("express-handlebars");
 const app = express();
+const dotenv = require("dotenv");
+
+// Set up dotenv
+dotenv.config({ path: "./keys.env" });
 
 // Set up HandleBars
 app.engine(".hbs", exphbs.engine({
