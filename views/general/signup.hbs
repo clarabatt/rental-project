@@ -6,7 +6,7 @@
             <div class="mb-3">
                 <label class="form-label">First Name</label>
                 <input type="text" class="form-control {{#if validationMsg.firstname}}is-invalid{{/if}}"
-                    value="{{values.firstname}}" id="exampleFormControlInput1">
+                    value="{{values.firstname}}" name="firstname">
                 <div class="invalid-feedback">
                     {{validationMsg.firstname}}
                 </div>
@@ -14,15 +14,15 @@
             <div class="mb-3">
                 <label class="form-label">Last Name</label>
                 <input type="text" class="form-control {{#if validationMsg.lastname}}is-invalid{{/if}}"
-                    value="{{values.lastname}}" id="exampleFormControlInput1">
+                    value="{{values.lastname}}" name="lastname">
                 <div class="invalid-feedback">
                     {{validationMsg.lastname}}
                 </div>
             </div>
             <div class="mb-3">
                 <label for="staticEmail" class="form-label">Email</label>
-                <input type="text" class="form-control {{#if validationMsg.email}}is-invalid{{/if}}"
-                    id="exampleFormControlInput2" value="{{values.email}}" placeholder="name@example.com">
+                <input type="text" class="form-control {{#if validationMsg.email}}is-invalid{{/if}}" name="email"
+                    value="{{values.email}}" placeholder="name@example.com">
                 <div class="invalid-feedback">
                     {{validationMsg.email}}
                 </div>
@@ -30,14 +30,14 @@
             <div class="mb-3">
                 <label for="inputPassword" class="form-label">Password</label>
                 <input type="password" class="form-control {{#if validationMsg.password}}is-invalid{{/if}}"
-                    value="{{values.password}}" id="exampleFormControlInput3">
+                    value="{{values.password}}" name="password">
                 <div class="invalid-feedback">
                     {{validationMsg.password}}
                 </div>
             </div>
             <div class="mb-3">
                 <label for="inputPassword" class="form-label">Confirm Password</label>
-                <input type="password" class="form-control" id="exampleFormControlInput4">
+                <input type="password" class="form-control" name="exampleFormControlInput4">
             </div>
             <div class="buttons d-flex flex-row justify-content-evenly">
                 <a href="/" class="btn btn-secondary" role="button">Back to Home</a>
