@@ -36,8 +36,12 @@
                 </div>
             </div>
             <div class="mb-3">
-                <label for="inputPassword" class="form-label">Confirm Password</label>
-                <input type="password" class="form-control" name="exampleFormControlInput4">
+                <label for="inputPassword"
+                    class="form-label {{#if validationMsg.passwordConfirm}}is-invalid{{/if}}">Confirm Password</label>
+                <input type="password" class="form-control" value="{{values.passwordConfirm}}" name="passwordConfirm">
+                <div class="invalid-feedback">
+                    {{validationMsg.passwordConfirm}}
+                </div>
             </div>
             <div class="buttons d-flex flex-row justify-content-evenly">
                 <a href="/" class="btn btn-secondary" role="button">Back to Home</a>

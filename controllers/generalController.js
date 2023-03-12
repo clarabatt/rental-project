@@ -26,7 +26,7 @@ router.post("/signup", (req, res) => {
     
     console.log(req.body);
 
-    const { firstname, lastname, email, password } = req.body;
+    const { firstname, lastname, email, password, passwordConfirm} = req.body;
 
     var responseObj = {
         validationMsg: {},
@@ -45,6 +45,14 @@ router.post("/signup", (req, res) => {
     else if (!(/\W+/gm.test(password) && /[a-z]+/gm.test(password) && /[A-Z]+/gm.test(password) && /[0-9]+/gm.test(password))) {
             responseObj.validationMsg.password = "A password must contains at least one lowercase letter, uppercase letter, number and a symbol.";
             isValidationOk = false;
+    }
+
+    if(typeof passwordConfirm !== "string" || passwordConfirm.trim().length === 0) {
+        responseObj.validationMsg.passwordConfirm = "Please, type again the password";
+            isValidationOk = false;
+    } else if (passwordConfirm != password) {
+        responseObj.validationMsg.passwordConfirm = "The passwords don't match";
+        isValidationOk = false;
     }
 
     if (typeof email !== "string" || email.trim().length === 0){
