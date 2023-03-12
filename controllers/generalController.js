@@ -23,6 +23,9 @@ router.get("/signup", (req, res) => {
 });
 
 router.post("/signup", (req, res) => {
+    
+    console.log(req.body);
+
     const { firstname, lastname, email, password } = req.body;
 
     var responseObj = {
@@ -35,21 +38,21 @@ router.post("/signup", (req, res) => {
     if (typeof password !== "string" || password.trim().length === 0){
         responseObj.validationMsg.password = "Please enter a password";
         isValidationOk = false;
-    } 
-    if (!(password.trim().length >= 8 && password.trim().length <= 12 && /[a-z]+[A-Z]+[-!$@#%^&*()_+|~=`{}\[\]:";'<>?,.\/]+[0-9]+/gm.test(password))) {
-        responseObj.validationMsg.password = "A password must attend those criteria: Size is between 8 to 12 characters and contains at least one lowercase letter, uppercase letter, number and a symbol.";
-        isValidationOk = false;
+    } else if (!(password.trim().length >= 8 && password.trim().length <= 12)) {
+        responseObj.validationMsg.password = "A password size must be between 8 to 12 characters";
+            isValidationOk = false;
+    }
+    else if (!(/\W+/gm.test(password) && /[a-z]+/gm.test(password) && /[A-Z]+/gm.test(password) && /[0-9]+/gm.test(password))) {
+            responseObj.validationMsg.password = "A password must contains at least one lowercase letter, uppercase letter, number and a symbol.";
+            isValidationOk = false;
     }
 
-    
     if (typeof email !== "string" || email.trim().length === 0){
         responseObj.validationMsg.email = "Please enter an email";
         isValidationOk = false;
-    } 
-
-    if (!/(\w+)@([a-z]+)\.[a-z]{2,4}/.test(email)) {
-        responseObj.validationMsg.email = "The email is not valid";
-        isValidationOk = false;
+    }  else if (!/(\w+)@([a-z]+)\.[a-z]{2,4}/.test(email)) {
+            responseObj.validationMsg.email = "The email is not valid";
+            isValidationOk = false;
     }
 
     if (typeof firstname !== "string" || firstname.trim().length === 0){
@@ -65,6 +68,7 @@ router.post("/signup", (req, res) => {
     if (isValidationOk) {
         
         // SEND EMAIL
+        res.render("general/welcome");
 
     } else {
         res.render("general/signup", responseObj);
