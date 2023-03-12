@@ -83,14 +83,14 @@ router.post("/sign-up", (req, res) => {
               from: "clarabattesini@gmail.com",
               subject: "Clara from Rent Temp: Welcome!",
               html:
-                  `Hi ${firstname} ${lastname}!<br>
-                  We saw that you are interested on book a house rent. 
-                  That's the right place, we can help you with that task!
-                  Look our website to know more about us and to see new offers.
+                  `Hi ${firstname} ${lastname}!<br><br>
+                  We saw that you are interested on book a house rent. <br>
+                  That's the right place, we can help you with that task!<br>
+                  Look our website to know more about us and to see new offers.<br><br>
 
-                  Sincerely, 
-                  Clara
-                  Customer Success Analyst 
+                  Sincerely, <br>
+                  Clara<br>
+                  Customer Success Analyst <br>
                   `
           };
   
