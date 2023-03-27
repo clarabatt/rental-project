@@ -1,5 +1,6 @@
+const mongoose = require("mongoose");
 
-export const rentalSchema = new mongoose.Schema({
+const rentalSchema = new mongoose.Schema({
     headline: String,
         numSleeps: Number,
         numBedrooms: Number,
@@ -16,7 +17,7 @@ export const rentalSchema = new mongoose.Schema({
         featuredRental: Boolean,
 });
 
-export const Rental = mongoose.model("Rental", rentalSchema);
+const Rental = mongoose.model("Rental", rentalSchema);
 
 var rentals = [
     {

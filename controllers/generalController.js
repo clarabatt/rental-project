@@ -12,12 +12,6 @@ router.get("/log-in", (req, res) => {
     res.render("general/log-in");
 });
 
-router.get("/rentals", (req, res) => {
-    res.render("general/rentals", {
-        rentals: rentals.getRentalsByCityAndProvince(),
-    });
-});
-
 router.get("/sign-up", (req, res) => {
     res.render("general/sign-up");
 });

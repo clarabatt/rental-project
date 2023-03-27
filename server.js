@@ -39,7 +39,12 @@ app.use(express.static(path.join(__dirname, "/assets")));
 app.use(express.urlencoded({ extended: false }));
 
 const generalController = require("./controllers/generalController");
+const rentalController = require("./controllers/rentalController");
+
+app.use("/rentals", rentalController);
 app.use("/", generalController);
+
+
 
 // *** DO NOT MODIFY THE LINES BELOW ***
 
