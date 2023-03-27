@@ -15,6 +15,7 @@ const express = require("express");
 const exphbs = require("express-handlebars");
 const app = express();
 const dotenv = require("dotenv");
+const mongoose = require("mongoose");
 
 // Set up dotenv
 dotenv.config({ path: "./keys.env" });
@@ -26,6 +27,10 @@ app.engine(".hbs", exphbs.engine({
 }));
 app.set("view engine", ".hbs");
 
+mongoose.connect(`mongodb+srv://dbuser:${process.env.MONGO_KEY}@web322cvbb-2231.8hgrbf6.mongodb.net/web322db?retryWrites=true&w=majority`, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true
+});
 
 // Make the assets folder public
 app.use(express.static(path.join(__dirname, "/assets")));

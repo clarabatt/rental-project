@@ -6,7 +6,15 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "keywords": ["express", "bootstrap", "rest", "api", "mvc", "handlebars", "environment variables"],
+  "keywords": [
+    "express",
+    "bootstrap",
+    "rest",
+    "api",
+    "mvc",
+    "handlebars",
+    "environment variables"
+  ],
   "author": "Clara Verena Brito Battesini",
   "license": "ISC",
   "dependencies": {
@@ -15,6 +23,7 @@
     "dotenv": "^16.0.3",
     "express": "^4.18.2",
     "express-handlebars": "^6.0.7",
+    "mongoose": "^7.0.3",
     "npm": "^9.5.0"
   }
 }
