@@ -1,5 +1,23 @@
-// You will need to include at minimum six rentals:
-// four in one city and two in another.
+
+export const rentalSchema = new mongoose.Schema({
+    headline: String,
+        numSleeps: Number,
+        numBedrooms: Number,
+        numBathrooms: Number,
+        pricePerNight: Number,
+        city: String,
+        province: String,
+        imageUrl: String,
+        picture: {
+            site: String,
+            url: String,
+            author: String
+        },
+        featuredRental: Boolean,
+});
+
+export const Rental = mongoose.model("Rental", rentalSchema);
+
 var rentals = [
     {
         headline: "Old Town",
