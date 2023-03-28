@@ -20,7 +20,7 @@ router.get("/sign-up", (req, res) => {
     res.render("general/sign-up");
 });
 
-router.post("/sign-up", (req, res) => {
+router.post("/sign-up", async (req, res) =>{
 
     const { firstname, lastname, email, password, passwordConfirm} = req.body;
 
@@ -50,14 +50,32 @@ router.post("/sign-up", (req, res) => {
         responseObj.validationMsg.passwordConfirm = "The passwords don't match";
         isValidationOk = false;
     }
-
+    
     if (typeof email !== "string" || email.trim().length === 0){
         responseObj.validationMsg.email = "Please enter an email";
         isValidationOk = false;
-    }  else if (!/(\w+)@([a-z]+)\.[a-z]{2,4}/.test(email)) {
-            responseObj.validationMsg.email = "The email is not valid";
+    } else {
+        
+        await userModel.findOne({email: email}).then( data => {
+            console.log(data);
+            if (data) {
+                isEmailInUse = true;
+            } else {
+                isEmailInUse = false;
+            }
+        });
+
+        if (!/(\w+)@([a-z]+)\.[a-z]{2,4}/.test(email)) {
+                responseObj.validationMsg.email = "The email is not valid";
+                isValidationOk = false;
+        } else if (isEmailInUse) {
+            responseObj.validationMsg.email = "This emails is already in use";
             isValidationOk = false;
+        }
+
     }
+
+    console.log(isValidationOk);
 
     if (typeof firstname !== "string" || firstname.trim().length === 0){
         responseObj.validationMsg.firstname = "Please enter a firstname";
@@ -116,6 +134,8 @@ router.post("/sign-up", (req, res) => {
                 res.render("general/sign-up", responseObj);
             }
         });
+    } else {
+        res.render("general/sign-up", responseObj);
     }
 });
 
