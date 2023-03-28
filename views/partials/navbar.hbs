@@ -26,6 +26,10 @@
                 </li>
                 {{#if user}}
                 <li class="nav-item">
+                    <a class="nav-link" href={{#if user.isCustomer}} "/cart" {{else}}"/rentals/list" {{/if}}>Hi,
+                        {{user.firstName}}!</a>
+                </li>
+                <li class="nav-item">
                     <a class="nav-link" href="/log-out">Log out</a>
                 </li>
                 {{/if}}
