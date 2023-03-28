@@ -24,7 +24,7 @@ router.get("/sign-up", (req, res) => {
     res.render("general/sign-up");
 });
 
-router.get("/log-out", (req, res) => {
+router.get("/logout", (req, res) => {
     req.session.destroy();
     res.redirect("/log-in");
 });
