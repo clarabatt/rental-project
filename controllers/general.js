@@ -160,9 +160,11 @@ router.post("/log-in", async (req, res) => {
         responseObj.validationMsg.email = "Please enter an email";
         isValidationOk = false;
     } else {
-        await userModel.findOne({email: email}).then( data => {
-            if (data && bcrypt.compareSync(password, data.password)) {
+        await userModel.findOne({email: email}).then( user => {
+            if (user && bcrypt.compareSync(password, user.password)) {
                 isValidationOk = true;
+                req.session.user = user;
+                req.session.isCustomer = type === "customer";
             } else {
                 responseObj.validationMsg.email = "Sorry, you entered an invalid email and/or password";
                 isValidationOk = false;
@@ -174,7 +176,7 @@ router.post("/log-in", async (req, res) => {
         if (type === "clerk") {
             res.render("rentals/list");
         } else {
-            res.render("/cart");
+            res.render("general/cart");
         }
     } else {
         res.render("general/log-in", responseObj);
