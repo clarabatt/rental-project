@@ -16,6 +16,7 @@ const exphbs = require("express-handlebars");
 const app = express();
 const dotenv = require("dotenv");
 const mongoose = require("mongoose");
+const session = require("express-session");
 
 // Set up dotenv
 dotenv.config({ path: "./keys.env" });
@@ -33,8 +34,20 @@ app.use(express.static(path.join(__dirname, "/assets")));
 // Set up body-parser
 app.use(express.urlencoded({ extended: false }));
 
-const generalController = require("./controllers/generalController");
-const rentalController = require("./controllers/rentalController");
+// Set up express-session
+app.use(session({
+    secret: process.env.SESSION_SECRET,
+    resave: false,
+    saveUninitialized: true
+}));
+
+app.use((req, res, next) => {
+    res.locals.user = req.session.user;
+    next();
+});
+
+const generalController = require("./controllers/general");
+const rentalController = require("./controllers/rental");
 
 app.use("/rentals", rentalController);
 app.use("/", generalController);
