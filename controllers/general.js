@@ -26,7 +26,7 @@ router.get("/sign-up", (req, res) => {
 
 router.get("/log-out", (req, res) => {
     req.session.destroy();
-    res.redirect("/");
+    res.redirect("/log-in");
 });
 
 router.post("/sign-up", async (req, res) =>{
