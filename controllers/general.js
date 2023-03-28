@@ -24,6 +24,11 @@ router.get("/sign-up", (req, res) => {
     res.render("general/sign-up");
 });
 
+router.get("/log-out", (req, res) => {
+    req.session.destroy();
+    res.redirect("/");
+});
+
 router.post("/sign-up", async (req, res) =>{
 
     const { firstname, lastname, email, password, passwordConfirm} = req.body;
@@ -149,6 +154,8 @@ router.post("/log-in", async (req, res) => {
         values: req.body
     };
 
+    console.log(type);
+
     isValidationOk = true;
 
     if (typeof password !== "string" || password.trim().length === 0){
@@ -173,10 +180,10 @@ router.post("/log-in", async (req, res) => {
     }
 
     if (isValidationOk) {
-        if (type === "clerk") {
-            res.render("rentals/list");
+        if (type === "customer") {
+            res.redirect("/cart");
         } else {
-            res.render("general/cart");
+            res.redirect("rentals/list");
         }
     } else {
         res.render("general/log-in", responseObj);
