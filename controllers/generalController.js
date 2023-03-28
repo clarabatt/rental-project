@@ -57,7 +57,6 @@ router.post("/sign-up", async (req, res) =>{
     } else {
         
         await userModel.findOne({email: email}).then( data => {
-            console.log(data);
             if (data) {
                 isEmailInUse = true;
             } else {
@@ -74,8 +73,6 @@ router.post("/sign-up", async (req, res) =>{
         }
 
     }
-
-    console.log(isValidationOk);
 
     if (typeof firstname !== "string" || firstname.trim().length === 0){
         responseObj.validationMsg.firstname = "Please enter a firstname";
@@ -139,7 +136,7 @@ router.post("/sign-up", async (req, res) =>{
     }
 });
 
-router.post("/log-in", (req, res) => {
+router.post("/log-in", async (req, res) => {
 
     const { email, password } = req.body;
 
@@ -158,6 +155,15 @@ router.post("/log-in", (req, res) => {
     if (typeof email !== "string" || email.trim().length === 0){
         responseObj.validationMsg.email = "Please enter an email";
         isValidationOk = false;
+    } else {
+        await userModel.findOne({email: email}).then( data => {
+            if (data && bcrypt.compareSync(password, data.password)) {
+                isValidationOk = true;
+            } else {
+                responseObj.validationMsg.email = "Sorry, you entered an invalid email and/or password";
+                isValidationOk = false;
+            }
+        });
     }
 
     if (isValidationOk) {
