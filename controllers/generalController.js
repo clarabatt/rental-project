@@ -1,6 +1,10 @@
 const express = require("express");
 const router = express.Router();
-const rentals = require("../models/rental-db")
+const rentals = require("../models/rental-db");
+const userModel = require("../models/userModel");
+const bcrypt = require("bcryptjs");
+
+var salt = bcrypt.genSaltSync(10);
 
 router.get("/", (req, res) => {
     res.render("general/home", {
@@ -17,8 +21,6 @@ router.get("/sign-up", (req, res) => {
 });
 
 router.post("/sign-up", (req, res) => {
-    
-    console.log(req.body);
 
     const { firstname, lastname, email, password, passwordConfirm} = req.body;
 
@@ -68,41 +70,52 @@ router.post("/sign-up", (req, res) => {
     }
 
     if (isValidationOk) {
-        
-          const sendGrid = require("@sendgrid/mail");
-          sendGrid.setApiKey(process.env.SEND_GRID_API_KEY);
-  
-          const msg = {
-              to: email,
-              from: "clarabattesini@gmail.com",
-              subject: "Clara from Rent Temp: Welcome!",
-              html:
-                  `Hi ${firstname} ${lastname}!<br><br>
-                  We saw that you are interested on book a house rent. <br>
-                  That's the right place, we can help you with that task!<br>
-                  Look our website to know more about us and to see new offers.<br><br>
 
-                  Sincerely, <br>
-                  Clara<br>
-                  Customer Success Analyst <br>
-                  `
-          };
+        const newUser = new userModel({
+            firstName: firstname,
+            lastName: lastname,
+            email: email,
+            password: bcrypt.hashSync(password, salt)
+        });
+
+        newUser.save()
+        .then(() => {
+            const sendGrid = require("@sendgrid/mail");
+            sendGrid.setApiKey(process.env.SEND_GRID_API_KEY);
+    
+            const msg = {
+                to: email,
+                from: "clarabattesini@gmail.com",
+                subject: "Clara from Rent Temp: Welcome!",
+                html:
+                    `Hi ${firstname} ${lastname}!<br><br>
+                    We saw that you are interested on book a house rent. <br>
+                    That's the right place, we can help you with that task!<br>
+                    Look our website to know more about us and to see new offers.<br><br>
   
-          sendGrid.send(msg)
-              .then(() => {
-                res.render("general/welcome");
-              })
-              .catch(err => {
-                  console.log(err);
-  
-                  res.render("general/sign-up", {
-                    validationMsg,
-                    values: req.body
-                  });
-              });
-  
-    } else {
-        res.render("general/sign-up", responseObj);
+                    Sincerely, <br>
+                    Clara<br>
+                    Customer Success Analyst <br>
+                    `
+            };
+    
+            sendGrid.send(msg)
+                .then(() => {
+                  res.render("general/welcome");
+                })
+                .catch(err => {
+                    console.log(err);
+    
+                    res.render("general/sign-up", {
+                      validationMsg,
+                      values: req.body
+                    });
+                });
+        }).catch(err => {
+            if (err) {
+                res.render("general/sign-up", responseObj);
+            }
+        });
     }
 });
 
