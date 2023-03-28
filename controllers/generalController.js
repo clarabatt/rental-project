@@ -138,7 +138,7 @@ router.post("/sign-up", async (req, res) =>{
 
 router.post("/log-in", async (req, res) => {
 
-    const { email, password } = req.body;
+    const { email, password, type } = req.body;
 
     var responseObj = {
         validationMsg: {},
@@ -167,7 +167,11 @@ router.post("/log-in", async (req, res) => {
     }
 
     if (isValidationOk) {
-        res.render("general/welcome");
+        if (type === "clerk") {
+            res.render("rentals/list");
+        } else {
+            res.render("/cart");
+        }
     } else {
         res.render("general/log-in", responseObj);
     }
