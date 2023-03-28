@@ -1,24 +1,3 @@
-const mongoose = require("mongoose");
-
-const rentalSchema = new mongoose.Schema({
-    headline: String,
-        numSleeps: Number,
-        numBedrooms: Number,
-        numBathrooms: Number,
-        pricePerNight: Number,
-        city: String,
-        province: String,
-        imageUrl: String,
-        picture: {
-            site: String,
-            url: String,
-            author: String
-        },
-        featuredRental: Boolean,
-});
-
-const Rental = mongoose.model("Rental", rentalSchema);
-
 var rentals = [
     {
         headline: "Old Town",

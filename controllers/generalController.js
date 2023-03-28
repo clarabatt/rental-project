@@ -16,6 +16,10 @@ router.get("/log-in", (req, res) => {
     res.render("general/log-in");
 });
 
+router.get("/cart", (req, res) => {
+    res.render("general/cart");
+});
+
 router.get("/sign-up", (req, res) => {
     res.render("general/sign-up");
 });
