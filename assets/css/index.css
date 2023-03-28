@@ -42,7 +42,7 @@ body {
     width: 100%;
 }
 
-.hero .hero-buttons a{
+.hero .hero-buttons a {
     margin: 2rem .7rem;
 }
 
@@ -127,7 +127,7 @@ footer {
     width: 100%;
 }
 
-.list-group-item span{
+.list-group-item span {
     width: 30% !important;
 }
 
@@ -153,7 +153,8 @@ footer {
     margin-top: 2rem;
 }
 
-.login .card .buttons a,button {
+.login .card .buttons a,
+button {
     width: 40%;
 }
 
@@ -186,19 +187,32 @@ footer {
     margin-bottom: 2rem;
 }
 
+.type {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+    width: 100%;
+    margin: 2rem 0;
+}
+
+.type input {
+    cursor: pointer;
+}
+
 @media only screen and (max-width: 1280px) {
-    
+
     .cityProvince {
         width: 80%;
     }
-    
+
 }
 
 @media only screen and (max-width: 1100px) {
     .benefits {
         margin: 4rem 1rem;
     }
-    
+
     .benefit_img {
         width: 4rem;
         margin-right: 1rem;
@@ -211,19 +225,19 @@ footer {
     }
 
     .house_card {
-        width:30%;
+        width: 30%;
     }
 
     .academic_policy {
         width: 50%;
     }
-    
+
     .social_media {
         flex-wrap: wrap;
         margin-top: 1rem;
         align-content: flex-start;
     }
-    
+
     .social_media img {
         width: 3rem;
         margin: .5rem .5rem;
@@ -233,7 +247,8 @@ footer {
         width: 60%;
     }
 
-    .login .card .buttons a,button {
+    .login .card .buttons a,
+    button {
         width: 45%;
     }
 
@@ -261,7 +276,7 @@ footer {
     .benefit {
         width: 80%;
     }
-    
+
     .benefit_img {
         width: 4rem;
         margin: 1rem 0;
@@ -274,7 +289,7 @@ footer {
     }
 
     .house_card {
-        width:90%;
+        width: 90%;
         margin: 1rem 0;
     }
 
@@ -289,7 +304,7 @@ footer {
         width: 100% !important;
         order: 2;
     }
-    
+
     .social_media {
         width: 100%;
         order: 1;
@@ -300,11 +315,12 @@ footer {
         width: 90%;
     }
 
-    .login .card .buttons a,button {
+    .login .card .buttons a,
+    button {
         width: 100%;
         margin: 1rem 0;
     }
-    
+
     .login .card .buttons {
         flex-direction: column !important;
         margin: .5rem 0;
@@ -322,5 +338,5 @@ footer {
     .cityProvince .house_card {
         width: 100%;
     }
-    
+
 }
