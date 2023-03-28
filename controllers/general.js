@@ -17,7 +17,11 @@ router.get("/log-in", (req, res) => {
 });
 
 router.get("/cart", (req, res) => {
-    res.render("general/cart");
+    if (!req.session.user || req.session.isCustomer) {
+        res.render("general/cart");
+    } else {
+        res.status(401).render("general/401");
+    }
 });
 
 router.get("/sign-up", (req, res) => {

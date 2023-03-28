@@ -9,7 +9,12 @@ router.get("/", (req, res) => {
 });
 
 router.get("/list", (req, res) => {
-    res.render("rentals/list");
+    if (!req.session.user || !req.session.isCustomer) {
+        res.render("rentals/list");
+    } else {
+        // res.status(401).send("You are not authorized to view this page.");
+        res.status(401).render("general/401");
+    }
 });
 
 
