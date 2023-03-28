@@ -154,8 +154,6 @@ router.post("/log-in", async (req, res) => {
         values: req.body
     };
 
-    console.log(type);
-
     isValidationOk = true;
 
     if (typeof password !== "string" || password.trim().length === 0){
