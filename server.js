@@ -27,11 +27,6 @@ app.engine(".hbs", exphbs.engine({
 }));
 app.set("view engine", ".hbs");
 
-mongoose.connect(`mongodb+srv://dbuser:${process.env.MONGO_KEY}@web322cvbb-2231.8hgrbf6.mongodb.net/web322db?retryWrites=true&w=majority`, {
-    useNewUrlParser: true,
-    useUnifiedTopology: true
-});
-
 // Make the assets folder public
 app.use(express.static(path.join(__dirname, "/assets")));
 
@@ -72,7 +67,15 @@ const HTTP_PORT = process.env.PORT || 8080;
 function onHttpStart() {
     console.log("Express http server listening on: " + HTTP_PORT);
 }
-  
-// Listen on port 8080. The default port for http is 80, https is 443. We use 8080 here
-// because sometimes port 80 is in use by other applications on the machine
-app.listen(HTTP_PORT, onHttpStart);
+
+mongoose.connect(`${process.env.MONGO_KEY}`, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true
+}).then(() => {
+    console.log("Connected to the MongoDB database.");
+
+    // Listen on port 8080. The default port for http is 80, https is 443. We use 8080 here because sometimes port 80 is in use by other applications on the machine
+    app.listen(HTTP_PORT, onHttpStart);
+}).catch(err => {
+    console.log(`Unable to connect to MongoDB ... ${err}`);
+});
