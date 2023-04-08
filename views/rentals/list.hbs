@@ -1,8 +1,16 @@
 <section class="hero">
     <img src="/img/hero_welcome.jpg" alt="A plate write welcome - https://unsplash.com/photos/OGND72jS-HE" />
     <h1>Hi Clerk! We're glad you are here!</h1>
+    <div class="hero-buttons d-flex flex-row justify-content-center">
+        <a href="/load-data/rentals" class="btn btn-secondary" role="button">Load Rental Data</a>
+        <a href="/rentals/add" class="btn btn-secondary" role="button">Add a new Rental</a>
+    </div>
 </section>
 
-<a href="/load-data/rentals" class="btn btn-secondary" role="button">Load Rental Data</a>
-
-<section class="benefits"></section>
+<section class="rentalsPage">
+    {{#each rentals}}
+    <div class="houseCard">
+        {{>card}}
+    </div>
+    {{/each}}
+</section>
