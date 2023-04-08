@@ -36,15 +36,15 @@ const rentalSchema = new mongoose.Schema({
       picture: {
         site: {
           type: String,
-          required: true
+          default: null,
         },
         url: {
           type: String,
-          required: true
+          default: null,
         },
         author: {
           type: String,
-          required: true
+          default: null,
         }
       },
       featuredRental: {
