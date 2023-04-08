@@ -48,7 +48,9 @@ app.use((req, res, next) => {
 
 const generalController = require("./controllers/general");
 const rentalController = require("./controllers/rental");
+const loadDataController = require('./controllers/loadData');
 
+app.use('/load-data', loadDataController);
 app.use("/rentals", rentalController);
 app.use("/", generalController);
 
