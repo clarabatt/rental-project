@@ -1,9 +1,9 @@
 <div class="card house_card">
     <div class="card_options">
-        <a><i alt="Edit" data-toggle="tooltip" data-placement="top" title="Edit this rental" style="color: #25252b"
-                class="bi bi-pencil-fill"></i></a>
-        <a><i alt="Delete" data-toggle="tooltip" data-placement="top" title="Delete this rental" style="color: #25252b"
-                class="bi bi-trash-fill"></i></a>
+        <a href="rentals/edit/{{id}}"><i alt="Edit" data-toggle="tooltip" data-placement="top" title="Edit this rental"
+                style="color: #25252b" class="bi bi-pencil-fill"></i></a>
+        <a href="rentals/delete/{{id}}"><i alt="Delete" data-toggle="tooltip" data-placement="top"
+                title="Delete this rental" style="color: #25252b" class="bi bi-trash-fill"></i></a>
     </div>
     <img class="card-img-top" src={{imageUrl}} alt="{{{picture.site}}} by {{{picture.author}}}: {{picture.url}}" />
     <div class="card-body">
