@@ -3,9 +3,26 @@ const router = express.Router();
 // const rentals = require("../models/rental-db");
 const rentals = require("../models/rentalModel");
 
-router.get("/", (req, res) => {
+router.get("/", async (req, res) => {
+    const rentalsByCityAndProvince = await rentals.aggregate([
+        {
+          $group: {
+            _id: { city: '$city', province: '$province' },
+            rentals: { $push: '$$ROOT' }
+          }
+        },
+        {
+          $project: {
+            _id: 0,
+            cityProvince: {
+              $concat: ['$_id.city', ', ', '$_id.province']
+            },
+            rentals: 1
+          }
+        }
+      ]);
     res.render("rentals/rentals", {
-        rentals: rentals.getRentalsByCityAndProvince(),
+        rentals: rentalsByCityAndProvince,
     });
 });
 
@@ -60,11 +77,13 @@ router.get('/edit/:id', (req, res) => {
     }).lean();
   });
 
-  router.get('/delete/:id', async (req, res) => {
+  router.post('/delete/:id', async (req, res) => {
     try {
-      const rental = await rentals.findOneAndRemove(req.params.id).lean();
+      const rental = await rentals.findOneAndRemove({ _id: req.params.id }).lean();
+      console.log(rental);
+      console.log(req.params.id);
       if (rental)
-        res.redirect('rentals/list');
+        res.redirect('/rentals/list');
     } catch (err) {
       console.log(err);
       res.status(500).send('Error retrieving rental from database!');
