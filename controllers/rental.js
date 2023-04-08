@@ -60,5 +60,16 @@ router.get('/edit/:id', (req, res) => {
     }).lean();
   });
 
+  router.get('/delete/:id', async (req, res) => {
+    try {
+      const rental = await rentals.findOneAndRemove(req.params.id).lean();
+      if (rental)
+        res.redirect('rentals/list');
+    } catch (err) {
+      console.log(err);
+      res.status(500).send('Error retrieving rental from database!');
+    }
+  });
+
 
 module.exports = router;

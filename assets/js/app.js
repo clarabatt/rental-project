@@ -1,5 +1,6 @@
-// const $ = require('jquery');
-
 $(document).ready(function() {
-    $('p').css('color', 'blue');
+    $("#confirmDeleteButton").click(function(event) {
+        event.preventDefault();
+        window.location.href = $(this).attr("href");
+    });
 });
