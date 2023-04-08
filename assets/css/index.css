@@ -85,11 +85,33 @@ body {
 
 .house_card {
     width: 20rem;
+    margin: 2rem 2rem 2rem 2rem;
 }
 
 .house_card img {
     height: 240px;
     object-fit: cover;
+}
+
+.card_options {
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding: 15px;
+}
+
+.card_options>a {
+    background-color: #fff;
+    border-radius: 50%;
+    height: 30px;
+    padding: 20px;
+    width: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 5px 0 0 0;
+    cursor: pointer;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 }
 
 footer {
