@@ -4,7 +4,7 @@ const Rental = require("../models/rentalModel");
 
 router.get('/rentals', async (req, res) => {
 
-    if (!req.session.user || req.session.isCustomer){
+    if (!req.session || !req.session.user || req.session.isCustomer){
         res.status(401).send("You are not authorized to add rentals");
         return;
     }
@@ -13,7 +13,7 @@ router.get('/rentals', async (req, res) => {
       const rentals = await Rental.find();
   
       if (rentals.length > 0) {
-        return res.render('load-data', {
+        return res.render('loadData/load-data', {
           message: 'Rentals have already been added to the database'
         });
       }
@@ -184,7 +184,7 @@ router.get('/rentals', async (req, res) => {
   
       await Rental.insertMany(rentalData);
   
-      return res.render('load-data', {
+      return res.render('loadData/add-rental', {
         message: 'Added rentals to the database'
       });
     } catch (err) {
