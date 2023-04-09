@@ -27,7 +27,7 @@ router.get("/list", async (req, res) => {
 router.get('/add', (req, res) => {
     res.render('rentals/add-rental');
 });
-  
+
 router.post('/add', async (req, res) => {
 
     const {headline, numSleeps, numBedrooms, numBathrooms, pricePerNight, city, province, filename, site, picUrl, author, featuredRental} = req.body;
@@ -64,7 +64,7 @@ router.get('/edit/:id', (req, res) => {
     }).lean();
   });
 
-  router.post('/delete/:id', async (req, res) => {
+  router.post('/remove/:id', async (req, res) => {
     try {
       const rental = await rentals.findOneAndRemove({ _id: req.params.id }).lean();
       console.log(rental);

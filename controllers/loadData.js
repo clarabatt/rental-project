@@ -184,7 +184,7 @@ router.get('/rentals', async (req, res) => {
   
       await Rental.insertMany(rentalData);
   
-      return res.render('loadData/add-rental', {
+      return res.render('/rentals/list', {
         message: 'Added rentals to the database'
       });
     } catch (err) {
