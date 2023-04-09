@@ -1,7 +1,7 @@
 <section class="login">
     <div class="card">
-        <form action="/rentals/add" method="post">
-            <h1>Add a Rental</h1>
+        <form action="/rentals/edit/{{values.id}}" method="post">
+            <h1>Edit a Rental</h1>
             <div class="mb-3">
                 <label for="headline">Headline</label>
                 <input type="text" class="form-control" id="headline" name="headline" value="{{values.headline}}"
@@ -39,14 +39,14 @@
             <div class="mb-3">
                 <label for="imageUrl">Image</label>
                 <input type="file" class="form-control-file" id="imageUrl" name="imageUrl"
-                    accept="image/jpg,image/jpeg,image/png,image/gif" value="{{values.imageUrl}}" required>
+                    accept="image/jpg,image/jpeg,image/png,image/gif" value="{{values.imageUrl}}">
             </div>
             <div class="mb-3 form-check">
                 <input type="checkbox" class="form-check-input" id="featuredRental" name="featuredRental"
                     value="{{values.featuredRental}}">
                 <label class="form-check-label" for="featuredRental">Featured Rental</label>
             </div>
-            <button type="submit" class="btn btn-primary">Create</button>
+            <button type="submit" class="btn btn-primary">Edit</button>
         </form>
     </div>
 </section>
