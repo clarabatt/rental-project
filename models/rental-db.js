@@ -166,9 +166,9 @@ module.exports.getFeaturedRentals = () => {
     return rentals.filter(x => x.featuredRental);
 }
 
-module.exports.getRentalsByCityAndProvince = () => {
+module.exports.getRentalsByCityAndProvince = (rentalsList) => {
     let newList = [];
-    rentals.forEach((r) => {
+    rentalsList.forEach((r) => {
         let cityProvince = `${r.city}, ${r.province}`;
         let index = newList.findIndex(x=>x.cityProvince === cityProvince);
         if (index != -1){

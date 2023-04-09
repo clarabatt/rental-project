@@ -1,26 +1,13 @@
 const express = require("express");
 const router = express.Router();
-// const rentals = require("../models/rental-db");
+const rent = require("../models/rental-db");
 const rentals = require("../models/rentalModel");
 
 router.get("/", async (req, res) => {
-    const rentalsByCityAndProvince = await rentals.aggregate([
-        {
-          $group: {
-            _id: { city: '$city', province: '$province' },
-            rentals: { $push: '$$ROOT' }
-          }
-        },
-        {
-          $project: {
-            _id: 0,
-            cityProvince: {
-              $concat: ['$_id.city', ', ', '$_id.province']
-            },
-            rentals: 1
-          }
-        }
-      ]);
+
+    const rentalsList = await rentals.find().lean();
+    const rentalsByCityAndProvince = rent.getRentalsByCityAndProvince(rentalsList);
+
     res.render("rentals/rentals", {
         rentals: rentalsByCityAndProvince,
     });
