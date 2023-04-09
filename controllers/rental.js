@@ -67,8 +67,6 @@ router.get('/edit/:id', (req, res) => {
   router.post('/remove/:id', async (req, res) => {
     try {
       const rental = await rentals.findOneAndRemove({ _id: req.params.id }).lean();
-      console.log(rental);
-      console.log(req.params.id);
       if (rental)
         res.redirect('/rentals/list');
     } catch (err) {
