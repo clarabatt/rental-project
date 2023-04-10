@@ -33,20 +33,6 @@ const rentalSchema = new mongoose.Schema({
         type: String,
         required: true
       },
-      picture: {
-        site: {
-          type: String,
-          default: null,
-        },
-        url: {
-          type: String,
-          default: null,
-        },
-        author: {
-          type: String,
-          default: null,
-        }
-      },
       featuredRental: {
         type: Boolean,
         default: false
