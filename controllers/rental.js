@@ -9,12 +9,8 @@ async function updatePic(houseId, imageUrl) {
 
   return await imageUrl.mv(`assets/img/houses/${uniqueName}`)
   .then(() => {
-    console.log(houseId);
       rentals.updateOne({ _id: houseId }, { "imageUrl": `/img/houses/${uniqueName}`})
-      .then(() => {
-        // Success
-        console.log("Updated the profile pic.");
-      })
+      .then()
       .catch(err => {
         console.log(`Error updating the user's profile picture ... ${err}`);
       });
