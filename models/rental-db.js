@@ -1,5 +1,3 @@
-// You will need to include at minimum six rentals:
-// four in one city and two in another.
 var rentals = [
     {
         headline: "Old Town",

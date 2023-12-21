@@ -1,31 +1,33 @@
-# WEB322 Project (Winter 2023)
+# Express Server Project
 
-I declare that this assignment is my own work in accordance with the Seneca Academic Policy.
-No part of this assignment has been copied manually or electronically from any other source
-(including web sites) or distributed to other students.
+This project is a simple Express server application.
 
-Student Name  : Clara Verena Brito Battesini
+![Home Page](assets/img/example.png)
 
-Student Email : cverena-brito-battes@myseneca.ca
+## Getting Started
 
-Course/Section: WEB322 NCC
+These instructions will get you a copy of the project up and running on your local machine for development and testing purposes.
 
-## Project URLs
+### Prerequisites
 
-GitHub Repo   : [https://github.com/clarabatt/web322-cverena-brito-battes](https://github.com/clarabatt/web322-cverena-brito-battes)
+What things you need to install the software and how to install them:
 
-Cyclic URL    : [https://web322-cverena-brito-battes.cyclic.app](https://web322-cverena-brito-battes.cyclic.app)
+- Node.js
+- npm
 
-## Settings
+### Installing
 
-Installing the dependencies
+A step by step series of examples that tell you how to get a development environment running:
 
-```
-npm i
-```
+1. Clone the repo
+2. Install NPM packages
 
-Running the code
+    ```sh
+    npm install
+    ```
 
-```
-node server.js
-```
+3. Running the code
+
+    ```sh
+    node server.js
+    ```
